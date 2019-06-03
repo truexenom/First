@@ -1,11 +1,54 @@
 #!/usr/bin/python
-#cmd: pip install pyowm
-import pyowm
+#pylint: disable=C0321 
+import pygame
 
-misto=input()
-owm = pyowm.OWM('ef2206ff5da67de63306d0b143e20872')    # You MUST provide a valid API key
-observation = owm.weather_at_place(misto)
-w = observation.get_weather()
-temperature=w.get_temperature('celsius')['temp']
-print("In " + misto + " misto" + " is the temperature of the air" + " " + str(temperature) + " for the Celsius")
-print("In this misto "+ w.get_detailed_status())
+# Define some colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+
+pygame.init()
+ 
+
+screen = pygame.display.set_mode([800, 600])
+ 
+
+pygame.display.set_caption('Fly')
+ 
+clock = pygame.time.Clock()
+
+
+pygame.display.update()
+ 
+
+background_position = [0, 0]
+ 
+
+player_image = pygame.image.load("/Users/msulym/Documents/Repository/truexenom-first/1.png").convert()
+
+
+player_image.set_colorkey(BLACK)
+ 
+done = False
+ 
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True            
+ 
+    
+
+    player_position = pygame.mouse.get_pos()
+    x = player_position[0]
+    y = player_position[1]
+ 
+
+    screen.blit(player_image, [x, y])
+ 
+
+    pygame.display.flip()
+ 
+    clock.tick(60)
+
+
+pygame.quit()
