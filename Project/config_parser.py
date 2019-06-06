@@ -14,6 +14,7 @@ def createConfig(path):
     config.set("FTP", "ftp_remote", "/")
     config.set("FTP", "ftp_username", "Default")
     config.set("FTP", "ftp_pkey", "Default")
+    config.set("FTP", "ftp_destination", "/tmp/ftp")
     config.add_section("S3")
     config.set("S3", "s3_bucket", "Default")
     config.set("S3", "s3_local", "/tmp")
